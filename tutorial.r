@@ -134,3 +134,4 @@ func4 <- function(country = "US") {
     paste("I am from", country)
 }
 #func4() will say "I am from US", func4(Mexico) will say "I am from Mexico"
+
