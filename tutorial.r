@@ -135,3 +135,58 @@ func4 <- function(country = "US") {
 }
 #func4() will say "I am from US", func4(Mexico) will say "I am from Mexico"
 
+#return a value in a function with return()
+func5 <- function(inta, intb) {
+    return(inta + intb)
+}
+
+#functions can be nested, one of two ways
+#type 1: call a function with another function
+nestedFunc <- function(x,y) {
+    a <- x + y
+    return(a)
+}
+#run with nestedFunc(nestedFunc(1,2), nestedFunc(3,4))
+
+#type 2: write a function within a function
+outFunc <- function(x) {
+    inFunc <- function(y) {
+        a <- x + y
+        return(a)
+    }
+    return(inFunc)
+}
+
+output <- outFunc(3)
+output(5)
+#You cannot directly call the function because the Inner_func has been defined (nested) inside the Outer_func.
+#We need to call Outer_func first in order to call Inner_func as a second step.
+#We need to create a new variable called output and give it a value, which is 3 here.
+#We then print the output with the desired value of "y", which in this case is 5.
+#The output will be 8
+
+
+#recursion exists as expected
+
+
+#variables created outside of functions are global variables, can be used by everyone inside and outside of functions
+
+#if a local variable has the same name as a global variable, the local will be different and only be usable in the function. The global will remain as it was, global and with its original value
+globtxt <- "global"
+globFunc <- function() {
+    globtxt <- "local"
+    paste(globtxt)
+}
+
+#when creating variables in a function, you can make it global using the <<- operator
+makeglob <- function() {
+    madeG <<- "made this global"
+}
+print(madeG)
+
+#use the global assignment operator to change the value of a global in a variable
+tempG <- "pre"
+tempGFunc <- function() {
+    tempG <<- "post"
+    paste(tempG)
+}
